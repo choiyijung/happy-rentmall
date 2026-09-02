@@ -80,7 +80,7 @@ form?.addEventListener("submit", async (e) => {
     form.querySelector('[name="phone"]').value = "";
 
     const privacy = form.querySelector('[name="privacy_agree"]');
-    if (privacy) privacy.checked = false;
+    if (privacy) privacy.checked = true;
 
   } catch (error) {
     alert(error.message || "상담 접수 중 오류가 발생했습니다.");
