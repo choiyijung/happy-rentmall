@@ -1,4 +1,6 @@
-﻿exports.handler = async function(event) {
+﻿const { Client } = require("pg");
+
+exports.handler = async function(event) {
   const headers = {
     "Content-Type": "application/json; charset=utf-8",
     "Cache-Control": "no-store"
@@ -11,6 +13,8 @@
       body: JSON.stringify({ ok: false, message: "Method Not Allowed" })
     };
   }
+
+  let client;
 
   try {
     const body = JSON.parse(event.body || "{}");
@@ -59,58 +63,51 @@
       };
     }
 
-    const supabaseUrl = process.env.SUPABASE_URL;
-    const secretKey = process.env.SUPABASE_SECRET_KEY;
+    const password = process.env.DB_PASSWORD;
 
-    if (!supabaseUrl || !secretKey) {
-      console.error("Supabase environment variables are missing.");
-
-      return {
-        statusCode: 500,
-        headers,
-        body: JSON.stringify({
-          ok: false,
-          message: "상담 접수 설정을 확인해주세요."
-        })
-      };
+    if (!password) {
+      throw new Error("DB_PASSWORD environment variable is missing.");
     }
 
-    const response = await fetch(
-      `${supabaseUrl}/rest/v1/consultations`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "apikey": secretKey,
-          "Prefer": "return=minimal"
-        },
-        body: JSON.stringify({
-          name,
-          phone,
-          car,
-          consultation_type: consultationType || null,
-          months: months || null,
-          region: region || null,
-          page_url: pageUrl || null,
-          privacy_agreed: true,
-          privacy_agreed_at: new Date().toISOString()
-        })
-      }
+    client = new Client({
+      host: "aws-0-ap-northeast-2.pooler.supabase.com",
+      port: 6543,
+      database: "postgres",
+      user: "postgres.lgkbpwekslpkjvjthhxq",
+      password,
+      ssl: {
+        rejectUnauthorized: false
+      },
+      connectionTimeoutMillis: 10000
+    });
+
+    await client.connect();
+
+    await client.query(
+      `
+      insert into public.consultations (
+        name,
+        phone,
+        car,
+        consultation_type,
+        months,
+        region,
+        page_url,
+        privacy_agreed,
+        privacy_agreed_at
+      )
+      values ($1,$2,$3,$4,$5,$6,$7,true,now())
+      `,
+      [
+        name,
+        phone,
+        car,
+        consultationType || null,
+        months || null,
+        region || null,
+        pageUrl || null
+      ]
     );
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error("Supabase insert failed:", response.status, errorText);
-
-      return {
-        statusCode: 500,
-        headers,
-        body: JSON.stringify({
-          ok: false,
-          message: "상담 접수 중 오류가 발생했습니다."
-        })
-      };
-    }
 
     return {
       statusCode: 200,
@@ -122,7 +119,7 @@
     };
 
   } catch (error) {
-    console.error("Consultation function error:", error);
+    console.error("Consultation DB error:", error);
 
     return {
       statusCode: 500,
@@ -132,5 +129,12 @@
         message: "상담 접수 중 오류가 발생했습니다."
       })
     };
+
+  } finally {
+    if (client) {
+      try {
+        await client.end();
+      } catch {}
+    }
   }
 };
