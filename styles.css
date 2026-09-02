@@ -1,0 +1,1082 @@
+:root{
+  --blue:#0d5fe9;
+  --blue-dark:#0846b8;
+  --yellow:#ffd43b;
+  --ink:#101828;
+  --muted:#667085;
+  --line:#e5e9f0;
+  --soft:#f5f8fd;
+  --navy:#0c1830;
+  --white:#fff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",Arial,sans-serif;
+  color:var(--ink);
+  background:#fff;
+  line-height:1.55;
+}
+a{text-decoration:none;color:inherit}
+button,input{font:inherit}
+button{cursor:pointer}
+.container{width:min(1180px,calc(100% - 40px));margin:0 auto}
+.site-header{
+  position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);
+  border-bottom:1px solid rgba(16,24,40,.08);backdrop-filter:blur(12px)
+}
+.nav-wrap{height:74px;display:flex;align-items:center;gap:32px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:21px;white-space:nowrap}
+.logo-mark{
+  width:34px;height:34px;border-radius:11px;background:var(--blue);color:#fff;
+  display:grid;place-items:center;font-size:20px;box-shadow:0 7px 18px rgba(13,95,233,.25)
+}
+.desktop-nav{margin-left:auto;display:flex;gap:28px;color:#344054;font-weight:700;font-size:14px}
+.desktop-nav a:hover{color:var(--blue)}
+.nav-cta{background:var(--blue);color:#fff;padding:12px 18px;border-radius:12px;font-weight:800;font-size:14px}
+.hero{
+  position:relative;overflow:hidden;padding:72px 0 82px;
+  background:
+    radial-gradient(circle at 10% 10%,rgba(13,95,233,.12),transparent 30%),
+    radial-gradient(circle at 85% 20%,rgba(255,212,59,.20),transparent 28%),
+    linear-gradient(180deg,#fbfdff,#f4f8ff);
+}
+.hero:after{
+  content:"";position:absolute;width:520px;height:520px;border-radius:50%;
+  border:90px solid rgba(13,95,233,.035);right:-220px;bottom:-280px
+}
+.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:70px;align-items:center;position:relative;z-index:1}
+.eyebrow{display:inline-block;font-size:13px;font-weight:900;letter-spacing:.12em;color:var(--blue);margin-bottom:13px}
+.hero h1{font-size:48px;line-height:1.17;letter-spacing:-.045em;margin:0 0 20px}
+.hero h1 strong{color:var(--blue)}
+.hero-copy>p{font-size:18px;color:var(--muted);max-width:650px;margin:0 0 30px}
+.hero-points{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:28px 0}
+.hero-points>div{
+  background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:0 10px 26px rgba(16,24,40,.05)
+}
+.hero-points b{display:block;color:var(--blue);font-size:12px;margin-bottom:5px}
+.hero-points span{font-weight:800;font-size:14px}
+.trust-row{display:flex;gap:18px;flex-wrap:wrap;color:#475467;font-size:14px;font-weight:700}
+.quote-card{
+  background:#fff;border:1px solid rgba(13,95,233,.12);border-radius:26px;padding:28px;
+  box-shadow:0 24px 60px rgba(44,76,130,.16)
+}
+.quote-head{display:flex;gap:12px;align-items:flex-start;margin-bottom:24px}
+.quote-head .badge{background:#eaf2ff;color:var(--blue);font-weight:900;font-size:12px;border-radius:9px;padding:7px 9px}
+.quote-head h2{font-size:25px;letter-spacing:-.03em;margin:0 0 3px}
+.quote-head p{margin:0;color:var(--muted);font-size:14px}
+.field-group{margin-bottom:18px}
+.field-group>label,.input-label{display:block;font-size:13px;font-weight:800;margin-bottom:8px;color:#344054}
+.segmented{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.segmented.months{grid-template-columns:repeat(4,1fr)}
+.segmented button{
+  border:1px solid var(--line);background:#fff;border-radius:10px;padding:11px 8px;font-weight:800;color:#475467
+}
+.segmented button.active{border-color:var(--blue);background:#edf4ff;color:var(--blue)}
+.input-label{margin-bottom:14px}
+.input-label input{
+  width:100%;margin-top:8px;padding:13px 14px;border:1px solid var(--line);border-radius:11px;outline:none;background:#fff
+}
+.input-label input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(13,95,233,.08)}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.agree{display:flex;gap:8px;align-items:flex-start;color:#667085;font-size:12px;margin:5px 0 16px}
+.agree input{margin-top:3px}
+.agree a{text-decoration:underline}
+.submit-btn{
+  width:100%;border:0;background:var(--blue);color:#fff;border-radius:12px;padding:15px 18px;font-weight:900;font-size:16px;
+  box-shadow:0 10px 24px rgba(13,95,233,.22)
+}
+.submit-btn:hover{background:var(--blue-dark)}
+.form-note{font-size:11px;color:#98a2b3;margin:9px 0 0}
+.stats-strip{background:var(--navy);color:#fff}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+.stats-grid>div{padding:22px 26px;border-right:1px solid rgba(255,255,255,.12)}
+.stats-grid>div:last-child{border-right:0}
+.stats-grid strong{display:block;font-size:20px;margin-bottom:3px}
+.stats-grid span{font-size:13px;color:#cbd5e1}
+.section{padding:92px 0}
+.section.soft{background:var(--soft)}
+.section-title{text-align:center;max-width:750px;margin:0 auto 44px}
+.section-title.left{text-align:left;margin-left:0}
+.section-title h2{font-size:36px;line-height:1.25;letter-spacing:-.035em;margin:0 0 13px}
+.section-title p{margin:0;color:var(--muted);font-size:16px}
+.comparison-card{border:1px solid var(--line);border-radius:24px;padding:26px;background:#fff;box-shadow:0 16px 40px rgba(16,24,40,.06)}
+.comparison-top{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:20px}
+.comparison-top small{color:#98a2b3}
+.live-dot{width:9px;height:9px;border-radius:50%;background:#16b364;display:inline-block;margin-right:8px;box-shadow:0 0 0 5px rgba(22,179,100,.12)}
+.comparison-table-wrap{overflow:auto}
+table{width:100%;border-collapse:collapse;min-width:760px}
+th,td{padding:17px 15px;border-bottom:1px solid #edf0f4;text-align:center}
+th{background:#f8fafc;color:#667085;font-size:13px}
+td{font-weight:700}
+td:first-child{text-align:left}
+td span{display:block;font-size:12px;color:#98a2b3;font-weight:500}
+td.best{color:var(--blue);background:#f4f8ff}
+td.best em{font-style:normal;background:var(--blue);color:#fff;border-radius:6px;padding:3px 5px;margin-left:5px;font-size:10px}
+.center-btn{display:block;width:max-content;margin:26px auto 0;background:var(--ink);color:#fff;padding:13px 20px;border-radius:12px;font-weight:800}
+.benefit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.benefit-grid article{
+  position:relative;background:#fff;border-radius:20px;padding:26px;border:1px solid #e8edf5;min-height:240px
+}
+.benefit-grid .num{position:absolute;right:20px;top:18px;color:#d0d5dd;font-weight:900;font-size:12px}
+.icon-box{
+  width:50px;height:50px;border-radius:15px;background:#edf4ff;color:var(--blue);display:grid;place-items:center;
+  font-size:20px;font-weight:900;margin-bottom:26px
+}
+.benefit-grid h3,.process-grid h3{font-size:19px;margin:0 0 9px}
+.benefit-grid p,.process-grid p{color:var(--muted);font-size:14px;margin:0}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px}
+.process-grid article{padding:6px 18px 6px 0;position:relative}
+.process-grid article:not(:last-child):after{
+  content:"→";position:absolute;right:-7px;top:15px;color:#c5cbd4;font-size:26px
+}
+.process-grid span{font-size:44px;font-weight:900;color:#dbe8ff;display:block;line-height:1;margin-bottom:16px}
+.dark-section{background:var(--navy)}
+.section-title.white h2{color:#fff}
+.section-title.white p{color:#aebad0}
+.review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.review-grid article{background:#132541;border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:26px;color:#fff}
+.stars{color:var(--yellow);letter-spacing:2px;margin-bottom:16px}
+.review-grid p{color:#e6ebf4;font-size:15px;min-height:92px}
+.review-grid span{color:#91a1ba;font-size:13px}
+.guide-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.guide-grid a{
+  border:1px solid var(--line);border-radius:22px;padding:28px;transition:.2s;background:#fff
+}
+.guide-grid a:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(16,24,40,.08);border-color:#cddcff}
+.guide-grid span{font-size:11px;color:var(--blue);font-weight:900;letter-spacing:.12em}
+.guide-grid h3{font-size:22px;margin:10px 0}
+.guide-grid p{color:var(--muted);font-size:14px;min-height:46px}
+.guide-grid b{display:block;margin-top:20px;color:var(--blue);font-size:14px}
+.final-cta{padding:70px 0;background:linear-gradient(120deg,#0d5fe9,#07377f);color:#fff}
+.final-inner{display:flex;justify-content:space-between;align-items:center;gap:30px}
+.final-inner span{font-size:12px;letter-spacing:.14em;font-weight:900;color:#cce0ff}
+.final-inner h2{font-size:34px;line-height:1.25;margin:8px 0 0;letter-spacing:-.035em}
+.final-inner a{background:var(--yellow);color:#1f2a37;padding:16px 24px;border-radius:13px;font-weight:900;white-space:nowrap}
+footer{background:#0b1220;color:#d6deeb;padding:50px 0 100px}
+.footer-grid{display:grid;grid-template-columns:1.4fr .65fr 1fr;gap:50px}
+.footer-logo{color:#fff;margin-bottom:17px}
+.footer-grid p,.footer-grid a{font-size:13px;color:#8fa0b8;display:block;margin:7px 0}
+.footer-grid b{display:block;color:#fff;margin-bottom:12px}
+.copyright{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;margin-top:35px;font-size:12px;color:#718099}
+.mobile-bar{display:none}
+
+@media (max-width:960px){
+  .desktop-nav{display:none}
+  .hero-grid{grid-template-columns:1fr;gap:38px}
+  .hero{padding-top:50px}
+  .hero-copy{text-align:center}
+  .hero-copy>p{margin-left:auto;margin-right:auto}
+  .trust-row{justify-content:center}
+  .benefit-grid,.process-grid{grid-template-columns:repeat(2,1fr)}
+  .process-grid article:after{display:none}
+  .review-grid,.guide-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .container{width:min(100% - 28px,1180px)}
+  .site-header .nav-wrap{height:64px}
+  .logo{font-size:18px}
+  .nav-cta{display:none}
+  .hero{padding:42px 0 56px}
+  .hero h1{font-size:34px}
+  .hero-copy>p{font-size:16px}
+  .hero-points{grid-template-columns:1fr}
+  .trust-row{gap:9px 14px}
+  .quote-card{padding:20px;border-radius:20px}
+  .segmented.months{grid-template-columns:repeat(2,1fr)}
+  .two-col{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr}
+  .stats-grid>div{border-right:0;border-bottom:1px solid rgba(255,255,255,.1);padding:17px 20px}
+  .section{padding:64px 0}
+  .section-title h2{font-size:29px}
+  .comparison-card{padding:18px}
+  .comparison-top{align-items:flex-start;flex-direction:column}
+  .benefit-grid,.process-grid{grid-template-columns:1fr}
+  .benefit-grid article{min-height:auto}
+  .final-inner{flex-direction:column;align-items:flex-start}
+  .final-inner h2{font-size:29px}
+  .footer-grid{grid-template-columns:1fr}
+  footer{padding-bottom:110px}
+  .mobile-bar{
+    display:grid;grid-template-columns:1fr 1.25fr;position:fixed;bottom:0;left:0;right:0;z-index:60;
+    background:#fff;padding:10px 12px calc(10px + env(safe-area-inset-bottom));gap:8px;border-top:1px solid var(--line);
+    box-shadow:0 -8px 24px rgba(16,24,40,.08)
+  }
+  .mobile-bar button,.mobile-bar a{
+    border:0;border-radius:11px;padding:13px 8px;text-align:center;font-weight:900
+  }
+  .mobile-bar button{background:#edf1f6;color:#475467}
+  .mobile-bar a{background:var(--blue);color:#fff}
+}
+
+
+.final-inner-regions{
+  display:grid;
+  grid-template-columns:minmax(260px,.9fr) minmax(520px,1.65fr) auto;
+  gap:34px;
+  align-items:center;
+}
+.final-copy span{
+  font-size:12px;
+  letter-spacing:.14em;
+  font-weight:900;
+  color:#cce0ff;
+}
+.final-copy h2{
+  font-size:34px;
+  line-height:1.25;
+  margin:8px 0 0;
+  letter-spacing:-.035em;
+}
+.bottom-regions strong{
+  display:block;
+  margin-bottom:12px;
+  font-size:17px;
+}
+.bottom-region-grid{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:8px;
+}
+.bottom-region-grid a{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:40px;
+  padding:8px 10px;
+  border:1px solid rgba(255,255,255,.6);
+  border-radius:12px;
+  color:#fff;
+  background:rgba(255,255,255,.06);
+  font-size:13px;
+  font-weight:800;
+  text-align:center;
+  transition:.18s;
+}
+.bottom-region-grid a:hover{
+  background:#fff;
+  color:#0d5fe9;
+}
+.final-main-btn{
+  background:var(--yellow);
+  color:#1f2a37;
+  padding:16px 24px;
+  border-radius:13px;
+  font-weight:900;
+  white-space:nowrap;
+}
+@media (max-width:1100px){
+  .final-inner-regions{
+    grid-template-columns:1fr;
+  }
+  .bottom-region-grid{
+    grid-template-columns:repeat(4,1fr);
+  }
+  .final-main-btn{
+    width:max-content;
+  }
+}
+@media (max-width:640px){
+  .bottom-region-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+  .final-copy h2{
+    font-size:29px;
+  }
+}
+
+
+/* HERO v5 확정 위치 */
+.hero{
+  position:relative;
+  overflow:hidden;
+  padding:72px 0 82px;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.98) 0%,rgba(255,255,255,.95) 30%,rgba(255,255,255,.60) 50%,rgba(255,255,255,.10) 76%),
+    url("./assets/hero-red-car.png") 46% 57% / 118% auto no-repeat !important;
+}
+.hero-grid{grid-template-columns:1.06fr .94fr !important;gap:90px !important;}
+.quote-card{transform:translateX(92px) !important;}
+@media (max-width:1400px){.hero{background-size:122% auto !important;background-position:44% 57% !important}.quote-card{transform:translateX(68px) !important}}
+@media (max-width:1200px){.hero{background-size:125% auto !important;background-position:42% 56% !important}.quote-card{transform:translateX(38px) !important}}
+@media (max-width:960px){.hero{background-size:cover !important;background-position:65% center !important}.quote-card{transform:none !important}}
+
+/* ===== HAPPY-RENTMALL MAIN REVIEWS ===== */
+.review-section{
+  padding:88px 0;
+  background:#f7f8fa;
+}
+
+.review-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:24px;
+  margin-bottom:30px;
+}
+
+.review-head h2{
+  margin:0;
+  font-size:34px;
+  line-height:1.2;
+  letter-spacing:-0.04em;
+}
+
+.review-head p{
+  margin:9px 0 0;
+  color:#8b95a5;
+  font-size:15px;
+}
+
+.review-all-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:132px;
+  height:44px;
+  padding:0 17px;
+  border:1px solid #dfe4eb;
+  border-radius:22px;
+  background:#fff;
+  color:#344054;
+  font-size:13px;
+  font-weight:800;
+}
+
+.review-grid-new{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.review-card-new{
+  overflow:hidden;
+  border:1px solid #e1e6ed;
+  border-radius:18px;
+  background:#fff;
+  box-shadow:0 10px 30px rgba(16,24,40,.05);
+}
+
+.review-car-image{
+  width:100%;
+  aspect-ratio:16/9;
+  background:#edf1f6;
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
+}
+
+.review-card-body{
+  padding:22px 22px 20px;
+}
+
+.review-stars-new{
+  margin-bottom:9px;
+  color:#ffad00;
+  font-size:16px;
+  letter-spacing:2px;
+}
+
+.review-card-body h3{
+  margin:0 0 10px;
+  color:#101828;
+  font-size:19px;
+  letter-spacing:-0.025em;
+}
+
+.review-card-body p{
+  min-height:92px;
+  margin:0;
+  color:#687386;
+  font-size:14px;
+  line-height:1.75;
+}
+
+.review-bottom{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-top:18px;
+  padding-top:15px;
+  border-top:1px solid #edf0f4;
+  color:#98a2b3;
+  font-size:12px;
+}
+
+@media(max-width:900px){
+  .review-grid-new{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media(max-width:640px){
+  .review-section{
+    padding:60px 0;
+  }
+
+  .review-head{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .review-head h2{
+    font-size:29px;
+  }
+
+  .review-grid-new{
+    grid-template-columns:1fr;
+  }
+}
+/* ===== END MAIN REVIEWS ===== */
+
+
+/* ===== REVIEW CAR PHOTOS ===== */
+.review-car-1{
+  background-image:url("./assets/review-grandeur.jpg");
+}
+
+.review-car-2{
+  background-image:url("./assets/review-sorento.jpg");
+}
+
+.review-car-3{
+  background-image:url("./assets/review-carnival.jpg");
+}
+/* ===== END REVIEW CAR PHOTOS ===== */
+
+
+/* ===== HAPPY RENTMALL MAP SECTION ===== */
+.map-section{
+  padding:78px 0;
+  background:#f7f9fc;
+}
+
+.map-head{
+  margin-bottom:28px;
+}
+
+.map-head .eyebrow{
+  display:inline-block;
+  margin-bottom:10px;
+  color:#1559d6;
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:.12em;
+}
+
+.map-head h2{
+  margin:0 0 10px;
+  color:#101828;
+  font-size:34px;
+  line-height:1.2;
+  letter-spacing:-.04em;
+}
+
+.map-head p{
+  margin:0;
+  color:#6b7688;
+  font-size:15px;
+  line-height:1.7;
+}
+
+.map-wrap{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:22px;
+}
+
+.map-card,
+.map-info{
+  border:1px solid #e2e8f0;
+  border-radius:22px;
+  background:#fff;
+  box-shadow:0 12px 34px rgba(16,24,40,.05);
+}
+
+.map-card{
+  overflow:hidden;
+  min-height:460px;
+}
+
+.map-card iframe{
+  width:100%;
+  height:100%;
+  min-height:460px;
+  border:0;
+  display:block;
+}
+
+.map-info{
+  padding:28px;
+}
+
+.map-badge{
+  display:inline-block;
+  margin-bottom:12px;
+  padding:7px 12px;
+  border-radius:999px;
+  background:#eef4ff;
+  color:#1559d6;
+  font-size:12px;
+  font-weight:900;
+}
+
+.map-info h3{
+  margin:0 0 12px;
+  color:#101828;
+  font-size:26px;
+  line-height:1.3;
+  letter-spacing:-.03em;
+}
+
+.map-info p{
+  margin:0 0 18px;
+  color:#667085;
+  font-size:14px;
+  line-height:1.8;
+}
+
+.map-chip-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:0 0 20px;
+  padding:0;
+  list-style:none;
+}
+
+.map-chip-list li{
+  padding:10px 14px;
+  border:1px solid #dbe4f0;
+  border-radius:999px;
+  background:#f8fbff;
+  color:#344054;
+  font-size:13px;
+  font-weight:800;
+}
+
+.map-guide{
+  margin:0;
+  padding:18px 0 0;
+  border-top:1px solid #edf2f7;
+  list-style:none;
+}
+
+.map-guide li{
+  margin:0 0 10px;
+  color:#5f6b7a;
+  font-size:14px;
+  line-height:1.7;
+}
+
+.map-guide li:last-child{
+  margin-bottom:0;
+}
+
+@media(max-width:960px){
+  .map-wrap{
+    grid-template-columns:1fr;
+  }
+
+  .map-card,
+  .map-card iframe{
+    min-height:380px;
+  }
+}
+
+@media(max-width:640px){
+  .map-section{
+    padding:60px 0;
+  }
+
+  .map-head h2{
+    font-size:29px;
+  }
+
+  .map-info{
+    padding:22px;
+  }
+
+  .map-info h3{
+    font-size:23px;
+  }
+}
+/* ===== END HAPPY RENTMALL MAP SECTION ===== */
+
+
+/* ===== LOCAL PIN MAP V2 ===== */
+
+.local-pin-map{
+  padding:70px 0;
+  background:#fff;
+}
+
+.local-map-frame{
+  overflow:hidden;
+  width:100%;
+  height:390px;
+  border:1px solid #e1e6ed;
+  border-radius:18px;
+  background:#eef2f6;
+}
+
+.local-map-frame iframe{
+  display:block;
+  width:100%;
+  height:100%;
+  border:0;
+}
+
+.local-map-note{
+  margin-top:18px;
+  padding:22px 20px;
+  border:1px solid #dfe5ed;
+  border-radius:17px;
+  background:#f8fafc;
+  text-align:center;
+}
+
+.local-map-note strong{
+  display:block;
+  margin-bottom:7px;
+  color:#344054;
+  font-size:16px;
+}
+
+.local-map-note p{
+  margin:0 0 5px;
+  color:#475467;
+  font-size:14px;
+}
+
+.local-map-note span{
+  color:#667085;
+  font-size:13px;
+}
+
+@media(max-width:640px){
+
+  .local-pin-map{
+    padding:50px 0;
+  }
+
+  .local-map-frame{
+    height:320px;
+  }
+
+}
+
+/* ===== END LOCAL PIN MAP V2 ===== */
+
+
+/* ===== VEHICLE BRAND SECTION ===== */
+
+.vehicle-section{
+  padding:82px 0;
+  background:#f7f9fc;
+}
+
+.vehicle-head{
+  margin-bottom:32px;
+  text-align:center;
+}
+
+.vehicle-head .eyebrow{
+  display:inline-block;
+  margin-bottom:9px;
+  color:#1559d6;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.13em;
+}
+
+.vehicle-head h2{
+  margin:0 0 10px;
+  color:#101828;
+  font-size:34px;
+  line-height:1.25;
+  letter-spacing:-.04em;
+}
+
+.vehicle-head p{
+  margin:0;
+  color:#667085;
+  font-size:15px;
+}
+
+.vehicle-brand-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:14px;
+}
+
+.vehicle-brand-card{
+  padding:22px 18px;
+  border:1px solid #e1e7ef;
+  border-radius:19px;
+  background:#fff;
+  box-shadow:0 9px 28px rgba(16,24,40,.045);
+}
+
+.vehicle-brand-card h3{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin:0 0 16px;
+  padding-bottom:13px;
+  border-bottom:1px solid #edf1f5;
+  color:#172033;
+  font-size:19px;
+  letter-spacing:-.025em;
+}
+
+.vehicle-brand-card h3 span{
+  color:#1559d6;
+  font-size:11px;
+  font-weight:800;
+}
+
+.vehicle-model-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.vehicle-model-list a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:35px;
+  padding:7px 10px;
+  border:1px solid #dfe5ed;
+  border-radius:9px;
+  background:#fff;
+  color:#475467;
+  font-size:12px;
+  font-weight:800;
+  transition:.18s;
+}
+
+.vehicle-model-list a:hover{
+  border-color:#1559d6;
+  background:#eef4ff;
+  color:#1559d6;
+  transform:translateY(-1px);
+}
+
+.vehicle-more{
+  display:flex;
+  justify-content:center;
+  margin-top:30px;
+}
+
+.vehicle-more a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:180px;
+  height:48px;
+  padding:0 22px;
+  border-radius:12px;
+  background:#1559d6;
+  color:#fff;
+  font-size:14px;
+  font-weight:900;
+}
+
+@media(max-width:1100px){
+  .vehicle-brand-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+
+@media(max-width:760px){
+  .vehicle-brand-grid{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media(max-width:520px){
+  .vehicle-section{
+    padding:60px 0;
+  }
+
+  .vehicle-head h2{
+    font-size:29px;
+  }
+
+  .vehicle-brand-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+/* ===== END VEHICLE BRAND SECTION ===== */
+
+
+/* ===== POPULAR VEHICLE GRID V2 ===== */
+
+.vehicle-brand-grid{
+  grid-template-columns:repeat(3,1fr) !important;
+}
+
+@media(max-width:1000px){
+  .vehicle-brand-grid{
+    grid-template-columns:repeat(2,1fr) !important;
+  }
+}
+
+@media(max-width:600px){
+  .vehicle-brand-grid{
+    grid-template-columns:1fr !important;
+  }
+}
+
+/* ===== END POPULAR VEHICLE GRID V2 ===== */
+
+
+/* ===== VEHICLE GRID 5 BRANDS ===== */
+.vehicle-brand-grid{
+  grid-template-columns:repeat(5,1fr) !important;
+}
+
+@media(max-width:1200px){
+  .vehicle-brand-grid{
+    grid-template-columns:repeat(3,1fr) !important;
+  }
+}
+
+@media(max-width:850px){
+  .vehicle-brand-grid{
+    grid-template-columns:repeat(2,1fr) !important;
+  }
+}
+
+@media(max-width:520px){
+  .vehicle-brand-grid{
+    grid-template-columns:1fr !important;
+  }
+}
+/* ===== END VEHICLE GRID 5 BRANDS ===== */
+
+
+/* ===== MODEL SEO SECTION ===== */
+
+.model-seo-section{
+  padding:72px 0;
+  background:#fff;
+}
+
+.model-seo-box{
+  max-width:980px;
+  margin:0 auto;
+  padding:36px;
+  border:1px solid #e2e8f0;
+  border-radius:22px;
+  background:#f8fafc;
+}
+
+.model-seo-brand{
+  display:inline-block;
+  margin-bottom:10px;
+  color:#1559d6;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.08em;
+}
+
+.model-seo-box h2{
+  margin:0 0 18px;
+  color:#101828;
+  font-size:30px;
+  line-height:1.3;
+  letter-spacing:-.04em;
+}
+
+.model-seo-box p{
+  margin:0 0 12px;
+  color:#475467;
+  font-size:15px;
+  line-height:1.8;
+}
+
+.model-seo-points{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin-top:24px;
+}
+
+.model-seo-points span{
+  padding:13px 10px;
+  border:1px solid #dfe5ed;
+  border-radius:11px;
+  background:#fff;
+  color:#344054;
+  font-size:13px;
+  font-weight:800;
+  text-align:center;
+}
+
+@media(max-width:700px){
+  .model-seo-box{
+    padding:26px 20px;
+  }
+
+  .model-seo-box h2{
+    font-size:25px;
+  }
+
+  .model-seo-points{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+/* ===== END MODEL SEO SECTION ===== */
+
+
+/* ===== CAR REVIEW REAL PHOTOS V1 ===== */
+.car-review-photo{
+  min-height:190px;
+  background-size:cover !important;
+  background-repeat:no-repeat !important;
+  background-position:center !important;
+}
+.car-review-photo-1{ background-position:center 52% !important; }
+.car-review-photo-2{
+  background-position:center 42% !important;
+  filter:saturate(.96) contrast(1.03);
+}
+.car-review-photo-3{
+  background-position:center 60% !important;
+  filter:brightness(.97);
+}
+/* ===== END CAR REVIEW REAL PHOTOS V1 ===== */
+
+
+/* ===== CAR REVIEW REAL PHOTOS V2 ===== */
+.car-review-photo{
+  min-height:190px;
+  background-size:cover !important;
+  background-repeat:no-repeat !important;
+  background-position:center !important;
+}
+.car-review-photo-1{ background-position:center 52% !important; }
+.car-review-photo-2{ background-position:center 43% !important; }
+.car-review-photo-3{ background-position:center 60% !important; }
+/* ===== END CAR REVIEW REAL PHOTOS V2 ===== */
+
+
+/* ===== FOOTER BUSINESS INFO V1 ===== */
+
+.footer-business-info{
+  max-width:720px;
+  margin:28px 0 0 auto;
+  padding-top:20px;
+  text-align:right;
+  color:rgba(255,255,255,.65);
+  font-size:12px;
+  line-height:1.8;
+}
+
+.footer-business-info strong{
+  display:block;
+  margin-bottom:7px;
+  color:#fff;
+  font-size:15px;
+  font-weight:800;
+}
+
+.footer-business-info p{
+  margin:2px 0;
+}
+
+.footer-business-info p span{
+  margin-left:14px;
+}
+
+@media(max-width:700px){
+
+  .footer-business-info{
+    margin-top:24px;
+    text-align:left;
+  }
+
+  .footer-business-info p span{
+    display:block;
+    margin-left:0;
+  }
+}
+
+/* ===== END FOOTER BUSINESS INFO V1 ===== */
+
+
+/* ===== PRIVACY CONSENT V1 ===== */
+
+.privacy-consent{
+  margin:14px 0 16px;
+  padding:13px 14px;
+  border:1px solid #dfe5ed;
+  border-radius:10px;
+  background:#f8fafc;
+}
+
+.privacy-consent label{
+  display:flex;
+  align-items:flex-start;
+  gap:9px;
+  cursor:pointer;
+  color:#475467;
+  font-size:12px;
+  line-height:1.55;
+}
+
+.privacy-consent input{
+  width:16px;
+  height:16px;
+  margin-top:1px;
+  flex:0 0 auto;
+}
+
+.privacy-consent strong{
+  color:#1559d6;
+}
+
+.privacy-consent a{
+  margin-left:5px;
+  color:#1559d6;
+  font-weight:800;
+  text-decoration:underline;
+}
+
+/* ===== END PRIVACY CONSENT V1 ===== */
+
+
+/* ===== FOOTER POLICY LINKS V1 ===== */
+
+.footer-policy-links{
+  margin-top:10px !important;
+  padding-top:9px;
+  border-top:1px solid rgba(255,255,255,.12);
+}
+
+.footer-policy-links a{
+  color:rgba(255,255,255,.82);
+  font-weight:700;
+  text-decoration:none;
+}
+
+.footer-policy-links a:hover{
+  color:#fff;
+  text-decoration:underline;
+}
+
+.footer-policy-links span{
+  margin:0 7px;
+  color:rgba(255,255,255,.35);
+}
+
+/* ===== END FOOTER POLICY LINKS V1 ===== */
+
