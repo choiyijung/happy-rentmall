@@ -1,5 +1,3 @@
-﻿const { Client } = require("pg");
-
 exports.handler = async function(event) {
   const headers = {
     "Content-Type": "application/json; charset=utf-8",
@@ -13,8 +11,6 @@ exports.handler = async function(event) {
       body: JSON.stringify({ ok: false, message: "Method Not Allowed" })
     };
   }
-
-  let client;
 
   try {
     const body = JSON.parse(event.body || "{}");
@@ -52,62 +48,49 @@ exports.handler = async function(event) {
       };
     }
 
-    if (!/^[0-9+\-\s()]{8,30}$/.test(phone)) {
+    const supabaseUrl = process.env.SUPABASE_URL;
+    const secretKey = process.env.SUPABASE_SECRET_KEY;
+
+    if (!supabaseUrl || !secretKey) {
+      throw new Error("Supabase environment variables are missing.");
+    }
+
+    const response = await fetch(
+      `${supabaseUrl}/rest/v1/consultations`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "apikey": secretKey,
+          "Prefer": "return=minimal"
+        },
+        body: JSON.stringify({
+          name,
+          phone,
+          car,
+          consultation_type: consultationType || null,
+          months: months || null,
+          region: region || null,
+          page_url: pageUrl || null,
+          privacy_agreed: true,
+          privacy_agreed_at: new Date().toISOString()
+        })
+      }
+    );
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("Supabase insert failed:", response.status, errorText);
+
       return {
-        statusCode: 400,
+        statusCode: 500,
         headers,
         body: JSON.stringify({
           ok: false,
-          message: "휴대폰번호를 확인해주세요."
+          message: "상담 접수 중 오류가 발생했습니다."
         })
       };
     }
-
-    const password = process.env.DB_PASSWORD;
-
-    if (!password) {
-      throw new Error("DB_PASSWORD environment variable is missing.");
-    }
-
-    client = new Client({
-      host: "aws-0-ap-northeast-2.pooler.supabase.com",
-      port: 6543,
-      database: "postgres",
-      user: "postgres.lgkbpwekslpkjvjthhxq",
-      password,
-      ssl: {
-        rejectUnauthorized: false
-      },
-      connectionTimeoutMillis: 10000
-    });
-
-    await client.connect();
-
-    await client.query(
-      `
-      insert into public.consultations (
-        name,
-        phone,
-        car,
-        consultation_type,
-        months,
-        region,
-        page_url,
-        privacy_agreed,
-        privacy_agreed_at
-      )
-      values ($1,$2,$3,$4,$5,$6,$7,true,now())
-      `,
-      [
-        name,
-        phone,
-        car,
-        consultationType || null,
-        months || null,
-        region || null,
-        pageUrl || null
-      ]
-    );
 
     return {
       statusCode: 200,
@@ -119,7 +102,7 @@ exports.handler = async function(event) {
     };
 
   } catch (error) {
-    console.error("Consultation DB error:", error);
+    console.error("Consultation function error:", error);
 
     return {
       statusCode: 500,
@@ -129,12 +112,5 @@ exports.handler = async function(event) {
         message: "상담 접수 중 오류가 발생했습니다."
       })
     };
-
-  } finally {
-    if (client) {
-      try {
-        await client.end();
-      } catch {}
-    }
   }
 };
