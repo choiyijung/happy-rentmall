@@ -1,4 +1,4 @@
-﻿document.querySelectorAll(".segmented").forEach(group => {
+document.querySelectorAll(".segmented").forEach(group => {
   const hidden = group.parentElement.querySelector('input[type="hidden"]');
 
   group.querySelectorAll("button").forEach(button => {
@@ -93,5 +93,5 @@ form?.addEventListener("submit", async (e) => {
 });
 
 document.getElementById("callPlaceholder")?.addEventListener("click", () => {
-  alert("대표 전화번호가 정해지면 전화 연결 버튼으로 변경합니다.");
+  window.location.href = "tel:010-2144-2950";
 });

@@ -1212,3 +1212,46 @@ footer{background:#0b1220;color:#d6deeb;padding:50px 0 100px}
     display:none;
   }
 }
+/* ===== MOBILE HERO FIX V1 ===== */
+@media (max-width:960px){
+
+  .hero-grid{
+    grid-template-columns:1fr !important;
+    gap:28px !important;
+  }
+
+  .hero-grid > *{
+    min-width:0 !important;
+    width:100% !important;
+  }
+
+  .hero-copy{
+    width:100% !important;
+    max-width:none !important;
+  }
+
+  .quote-card{
+    width:100% !important;
+    max-width:none !important;
+    transform:none !important;
+    margin:0 !important;
+  }
+}
+
+@media (max-width:640px){
+
+  .hero{
+    padding-top:32px !important;
+    padding-bottom:42px !important;
+    background-position:center top !important;
+  }
+
+  .hero-grid{
+    gap:22px !important;
+  }
+
+  .quote-card{
+    padding:18px !important;
+    border-radius:18px !important;
+  }
+}
